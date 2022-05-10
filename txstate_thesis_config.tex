@@ -1,0 +1,225 @@
+% *****************************************************************************
+% 1. Triggers for this config
+% *****************************************************************************
+\usepackage{ifthen}
+\newboolean{enable-backrefs} % enable backrefs in the bibliography
+\setboolean{enable-backrefs}{false} % true false
+% *****************************************************************************
+
+% *****************************************************************************
+% 2. Personal data and user ad-hoc commands
+% *****************************************************************************
+\newcommand{\invpyr}[1]{\vbox{\hsize=4.5in \parindent=0pt \emergencystretch=1in
+  \parshape 6
+    0.00in 4.50in
+    0.25in 4.00in
+    0.50in 3.50in
+    0.75in 3.00in
+    1.00in 2.50in
+    1.25in 2.00in
+    \leftskip=0pt plus 1fil \rightskip=0pt plus -1fil
+    \parfillskip=0pt plus 2fil
+    #1}}
+
+\newcommand{\myTitle}{THE TITLE FOR THE THESIS GOES HERE AND \\ THE FORM SHOULD BE IN AN INVERTED \\ PYRAMID IN CAPITAL LETTERS\xspace}
+\newcommand{\myTITLE}{\expandafter\MakeUppercase\expandafter{\myTitle}}
+
+\newcommand{\mySubtitle}{\singlespacing A thesis submitted to the Graduate
+College of \\ 
+Texas State University in partial fulfillment \\
+of the requirements for the degree of\\}
+\newcommand{\myDegree}{Master of Science\\ with a Major in Physics\xspace}
+\newcommand{\myName}{Your Name Here\xspace}
+\newcommand{\myProf}{Advisor Name\xspace}
+\newcommand{\myOtherProf}{Put name here\xspace}
+\newcommand{\mySupervisor}{Put name here\xspace}
+\newcommand{\myFaculty}{Put data here\xspace}
+\newcommand{\myDepartment}{Department of Physics\xspace}
+\newcommand{\myUni}{Texas State University\xspace}
+\newcommand{\myLocation}{San Marcos, Texas\xspace}
+\newcommand{\myTime}{Month YYYY\xspace}
+\newcommand{\myYear}{YYYY\xspace}
+\newcommand{\myVersion}{version 1.0\xspace}
+\newcommand{\myCommitteeOne}{Chair Name, Chair\xspace}
+\newcommand{\myCommitteeTwo}{Member Name\xspace}
+\newcommand{\myCommitteeThree}{Member Name\xspace}
+
+% Setup, finetuning, and useful commands
+\newcounter{dummy} % necessary for correct hyperlinks (to index, bib, etc.)
+\newlength{\abcd} % for ab..z string length calculation
+\newcommand{\ie}{i.\,e.}
+\newcommand{\Ie}{I.\,e.}
+\newcommand{\eg}{e.\,g.}
+\newcommand{\Eg}{E.\,g.} 
+% *****************************************************************************
+
+
+
+% *****************************************************************************
+% 3. General useful packages
+% *****************************************************************************
+\PassOptionsToPackage{latin9}{inputenc}
+\usepackage{inputenc}
+% \PassOptionsToPackage{round}{natbib}
+%  \usepackage{natbib}
+% \PassOptionsToPackage{round}{biblatex}
+% \usepackage{biblatex}
+% \usepackage[ natbib=true, style=numeric, sorting=none]{biblatex}
+\PassOptionsToPackage{fleqn}{amsmath}   % math environments and more by the AMS
+\usepackage{amsmath}
+\PassOptionsToPackage{T1}{fontenc}
+\usepackage{fontenc}
+\usepackage{textcomp} % fix warning with missing font shapes
+\usepackage{scrhack} % fix warnings when using KOMA with listings package
+\usepackage{xspace} % to get the spacing after macros right
+\usepackage{fixltx2e} % fixes some LaTeX stuff 
+\PassOptionsToPackage{printonlyused,longest}{acronym}
+	\usepackage{acronym} % nice macros for handling all acronyms in the thesis
+\renewcommand*\aclabelfont[1]{\acsfont{#1}}
+%\renewcommand{\bflabel}[1]{{#1}\hfill} % fix the list of acronyms
+\usepackage{xpatch}
+% \usepackage{scrpage2}
+\usepackage{indentfirst}
+\RequirePackage{scrlfile}
+\ReplacePackage{scrpage2}{scrlayer-scrpage}
+\usepackage{tocloft}
+
+
+
+%******************************************************************************
+% 4. Hacks for the Table of Contents
+%******************************************************************************
+% spacing before contents heading
+\setlength{\cftbeforetoctitleskip}{-2em} % space above ToC title
+\setlength{\cftaftertoctitleskip}{-3.6em} % space below ToC title
+
+% dotted leaders for chapters
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}}
+
+% center, regular font, bold title, for Table of Contents
+\renewcommand{\cfttoctitlefont}{}
+\renewcommand{\contentsname}{\hfill\bfseries TABLE OF CONTENTS\hfill}
+\renewcommand{\cftaftertoctitle}{\null\hfill\textbf{Page}}
+
+% regular font and spacing for parts
+\renewcommand{\cftpartfont}{}
+\renewcommand{\cftpartpagefont}{}
+\setlength{\cftbeforepartskip}{0em}
+
+% regular font for chapters
+\renewcommand{\cftchapfont}{}
+\renewcommand{\cftchappagefont}{}
+
+% Add period after chapter number
+\renewcommand{\cftchapaftersnum}{.}
+
+% Fixing indentation
+\cftsetindents{section}{6em}{1.5em}
+\cftsetindents{subsection}{8em}{1.5em}
+\cftsetindents{subsubsection}{12em}{1.5em}
+\cftsetindents{chapter}{3em}{1.5em}
+\cftsetindents{part}{0in}{.5in}
+
+% Roman numerals for chapters
+\renewcommand\thechapter{\Roman{chapter}}
+% more hacks to get chapter heading
+\newcommand{\mychapter}[2]{
+    \setcounter{chapter}{#1}
+    \setcounter{section}{0}
+    \addcontentsline{toc}{part}{#2}
+}
+
+% List of figures formatting hacks
+\setlength{\cftbeforeloftitleskip}{-2.3em}
+% center, regular font, bold title
+\renewcommand{\cftloftitlefont}{}
+\renewcommand{\listfigurename}{\hfill\bfseries LIST OF FIGURES\hfill}
+\renewcommand{\cftafterloftitle}{\hfill\\\hfill\\\textbf{Figure}\hfill\textbf{Page}}
+\setlength{\cftafterloftitleskip}{-6em}
+\cftsetindents{fig}{0in}{.5in}
+
+% List of tables formatting hacks
+\setlength{\cftbeforelottitleskip}{-2.3em}
+% center, regular font, bold title
+\renewcommand{\cftlottitlefont}{}
+\renewcommand{\listtablename}{\hfill\bfseries LIST OF TABLES\hfill}
+\renewcommand{\cftafterlottitle}{\hfill\\\hfill\\\textbf{Table}\hfill\textbf{Page}}
+\setlength{\cftafterlottitleskip}{-6em}
+\cftsetindents{tab}{0in}{.5in}
+
+% Bibliography hacks
+\newcommand\mybibname{{\bf REFERENCES}}
+\renewcommand{\bibname}{\mybibname}
+\def\bibsection{\begin{center}\mybibname\end{center}}
+
+% Section and chapter font hacks
+\usepackage[explicit]{titlesec}
+\usepackage[normalem]{ulem}
+\titleformat{\section}{\center\normalfont\bfseries}{\thesection}{1em}{{#1}}
+\titleformat{\chapter}{\center\normalfont\bfseries}{\thechapter .}{1em}{#1}
+\titlespacing*{\chapter}{0pt}{-31pt}{12pt}
+\titleformat{\subsection}{\normalfont\bfseries}{\thesubsection}{1em}{{#1}}
+\titleformat{\susubsection}{\normalfont}{\thesubsubsection}{1em}{{#1}}
+% *****************************************************************************
+
+
+
+% *****************************************************************************
+% 5. Setup floats: tables, (sub)figures, and captions
+% *****************************************************************************
+\usepackage{tabularx} % better tables
+	\setlength{\extrarowheight}{3pt} % increase table row height
+\usepackage{caption}
+\captionsetup{format=hang,font=small}
+\usepackage{subfig}
+% *****************************************************************************
+
+
+
+% *****************************************************************************
+% 6. Setup code listings
+% *****************************************************************************
+\usepackage{listings} 
+\lstset{language=[LaTeX]Tex,%C++,
+    keywordstyle=\color{RoyalBlue},%\bfseries,
+    basicstyle=\small\ttfamily,
+    %identifierstyle=\color{NavyBlue},
+    commentstyle=\color{Green}\ttfamily,
+    stringstyle=\rmfamily,
+    numbers=none,%left,%
+    numberstyle=\scriptsize,%\tiny
+    stepnumber=5,
+    numbersep=8pt,
+    showstringspaces=false,
+    breaklines=true,
+    frameround=ftff,
+    frame=single,
+    belowcaptionskip=.75\baselineskip
+    %frame=L
+}
+% *****************************************************************************
+
+
+
+% *****************************************************************************
+% 6. Setup Hyperreference Links
+% *****************************************************************************
+\usepackage{hyperref}  % backref linktocpage pagebackref
+\usepackage{doi}
+\usepackage[superscript,biblabel]{cite}
+\usepackage{graphicx} 
+\hypersetup{
+    colorlinks=True,
+    linkcolor=black,
+    citecolor=black
+    }
+% *****************************************************************************
+
+
+
+% *****************************************************************************
+% 7. Last calls before the bar closes
+% *****************************************************************************
+\listfiles
+% *****************************************************************************

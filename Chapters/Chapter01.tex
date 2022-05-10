@@ -1,0 +1,48 @@
+%************************************************
+\addtocontents{toc}{\cftpagenumbersoff{part}}
+\addcontentsline{toc}{part}{CHAPTER}
+\chapter{INTRODUCTION}\label{ch:introduction}
+%************************************************
+
+
+
+
+%%% remember to eliminate all \lipsum[#] commands - they are just filler text. %%%
+
+
+
+
+\setlength{\parindent}{10mm} % indents are required on SECTION headers and beginning remarks
+\indent Pictures can be reference using the label such as \textbf{fig:pic1} for the Texas State image to call it in the text, as seen in Figure \ref{fig:pic1} However, renumbering them using the \texttt{renewcommand thefigure} means a period always follows the referenced image label, and so it is best to quote them at the end of a sentence to end with a period. References can be made using the \texttt{cite} for bibliography/references and \texttt{ref} for figures, tables, chapters, and sections like this \cite{einstein}. Acronyms are made by using the \texttt{ac} command in the text to call the Abbreviations file and is hyperlinked as well, like this one such as \ac{KISS}.
+
+
+\setlength{\parindent}{10mm}
+\lipsum[2]
+
+
+\begin{figure}[h!]
+    \renewcommand\thefigure{1.}
+    \centering                 
+    \includegraphics[scale=1]{Figs/Picture1.jpg}
+    \captionsetup{font=small}
+    \caption[The first sentence of the image caption should go in these square brackets.]{The first sentence of the image caption should go in these square brackets. The full caption goes in these curly brackets, and can be multiple sentences long. Here, you can also add acronyms here with the backslash-ac command.}
+    \label{fig:pic1}
+\end{figure}
+
+
+\setlength{\parindent}{10mm}
+\lipsum[3-4]
+
+
+
+\flushleft
+\section*{Section Header 1}
+\addcontentsline{toc}{section}{Section Header 1}
+
+
+\setlength{\parindent}{10mm} % indents are required on SECTION headers and beginning remarks
+\indent \lipsum[5]
+
+
+
+\pagebreak

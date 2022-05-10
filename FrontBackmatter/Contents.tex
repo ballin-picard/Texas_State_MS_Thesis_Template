@@ -1,0 +1,58 @@
+%*******************************************************
+% Table of Contents
+%*******************************************************
+\phantomsection
+\refstepcounter{dummy}
+\setcounter{tocdepth}{2} % <-- 2 includes up to subsections in the ToC
+\setcounter{secnumdepth}{3} % <-- 3 numbers up to subsubsections
+\justify
+
+\renewcommand{\contentsname}{\normalsize \textbf{TABLE OF CONTENTS}\\\hfill}
+
+\begin{center}
+    \tableofcontents
+    \addtocontents{toc}{\vspace{0pt}}
+\end{center}
+%*******************************************************
+% List of Figures and of the Tables
+%*******************************************************
+
+
+\clearpage
+\singlespacing
+\setlength{\cftparskip}{12pt}
+\setlength{\hangindent}{5mm}
+
+%\begingroup 
+
+%    \let\clearpage\relax
+%    \let\cleardoublepage\relax
+%    \let\cleardoublepage\relax
+  
+    %*******************************************************
+    % List of Tables - uncomment 36-42 to include LOT in the ToC/Frontmatter
+    %*******************************************************
+    % \vspace*{8ex}
+    % \newpage
+    % \phantomsection 
+    % \refstepcounter{dummy}
+    % \centering
+    % \mychapter{0}{LIST OF TABLES}
+    % \renewcommand{\listtablename}{LIST OF TABLES}
+    % \textbf{\listoftables}
+
+    %*******************************************************
+    % List of Figures
+    %*******************************************************  
+    % \vspace*{8ex}
+    \newpage
+    \phantomsection 
+    \refstepcounter{dummy}
+    \centering
+    \mychapter{0}{LIST OF FIGURES}
+    \renewcommand{\listfigurename}{LIST OF FIGURES}
+    \textbf{\listoffigures}
+
+%\endgroup
+\setlength{\cftparskip}{0pt}
+\setlength{\hangindent}{0mm}

@@ -1,0 +1,99 @@
+\documentclass[ dottedtoc,oneside,openright,titlepage,numbers=noenddot,headinclude,letterpaper
+                footinclude=true,cleardoublepage=empty,abstract=false,
+                paper=letterpaper,fontsize=12pt,
+                ngerman,american,
+                ]{scrreprt}
+
+
+%%% For use with pdfLaTeX compiler %%%
+\usepackage{mathptmx}
+\usepackage[T1]{fontenc} % for Times New Roman
+
+
+%%% For XeLaTeX compiler ###
+% \usepackage{fontspec} % use with XeLaTeX compiler
+% \setmainfont{Times New Roman}
+
+
+%**********************************%
+% Make all margin adjustments here %
+%**********************************%
+\usepackage{setspace}
+\input{txstate_thesis_config}
+\usepackage{geometry}
+\geometry{
+letterpaper,
+top = 2in,
+bottom = 1in,
+left = 1.5in,
+right = 1in,
+papersize = {8.5in, 11in},
+footskip = 0.5in,
+}
+
+
+% ********************************************************************
+% begin document
+\usepackage{lipsum}
+
+% ********************************************************************
+% Setup Document Parameters (general, over-writable)
+%*******************************************************
+\usepackage{ragged2e}
+\usepackage{notoccite}
+\usepackage{indentfirst}
+\begin{document}
+\pagenumbering{roman}
+\pagestyle{plain}
+
+
+%*************%
+% Frontmatter %
+%*************%
+\include{FrontBackmatter/Titlepage}
+\include{FrontBackmatter/Copyright}
+\include{FrontBackmatter/FairUse}
+% left-justfiy Dedication and Acknowledgments
+\raggedright
+\include{FrontBackmatter/Dedication}
+\include{FrontBackmatter/Acknowledgments}
+% spacing for the ToC and Front Matter
+\renewcommand{\cftsecafterpnum}{\vskip-12pt}
+\renewcommand{\cftsubsecafterpnum}{\vskip-12pt}
+\renewcommand{\cftdotsep}{1}
+\include{FrontBackmatter/Contents}
+\renewcommand{\cftsecafterpnum}{\vskip0pt}
+\renewcommand{\cftsubsecafterpnum}{\vskip0pt}
+\doublespacing
+% left-justfiy remainder of document
+\raggedright
+\include{FrontBackmatter/Abbreviations}
+\include{FrontBackmatter/Abstract}
+
+
+%************%
+% Mainmatter %
+%************%
+\pagenumbering{arabic}
+\newgeometry{top=1in, bottom=1in, left=1.5in, right=1in} % reset Mainmatter margins
+\doublespacing
+\include{Chapters/Chapter01}
+\include{Chapters/Chapter02}
+\include{Chapters/Chapter03}
+\include{Chapters/Chapter04}
+\include{Chapters/Chapter05}
+
+
+% ***********%
+% Backmatter % uncomment 86/87 to include appendix
+%************%
+% \appendix
+% \include{Chapters/Chapter0A}
+\singlespacing
+\include{FrontBackmatter/References}
+
+\end{document}
+
+
+% end document
+% ********************************************************************

@@ -1,0 +1,42 @@
+%*****************************************
+\chapter{CHAPTER HEADER 2}\label{ch:change_this_2}
+%*****************************************
+
+
+
+%%% remember to eliminate all \lipsum[#] commands - they are just filler text. %%%
+
+
+
+\setlength{\parindent}{10mm} % indents are required on SECTION headers and beginning remarks
+\indent Pre-section text can go here, and should automatically be indented by the \texttt{usepackage[indentfirst]} package. The \texttt{indent} function forces an indent, but must by done after the section header and before the body text.
+
+
+
+
+\flushleft
+\section*{Section Header 2}
+\addcontentsline{toc}{section}{Section Header 2}
+
+
+\setlength{\parindent}{10mm} % indents are required on SECTION headers and beginning remarks
+\indent \lipsum[6-7]
+
+
+\begin{figure}[t]
+    \renewcommand\thefigure{2.}
+    \centering                 
+    \includegraphics[scale=1]{Figs/Picture2.jpg}
+    \captionsetup{font=small}
+    \caption[The first sentence of the image caption should go in these square brackets.]{The first sentence of the image caption should go in these square brackets. The full caption goes in these curly brackets, and can be multiple sentences long. Here, you can also add acronyms here with the backslash-ac command seen here: \ac{KISS}.}
+    \label{fig:pic2}
+\end{figure}
+
+
+\setlength{\parindent}{10mm}
+\lipsum[8-9]
+
+
+
+
+\pagebreak
